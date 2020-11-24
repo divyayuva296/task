@@ -55,3 +55,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem 'devise'
+
+gem 'gemoji'
+gem "acts_as_follower"
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
+gem 'cancancan'

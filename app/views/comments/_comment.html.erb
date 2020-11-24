@@ -1,0 +1,12 @@
+
+	<%= comment.comments %><br>
+<p>
+  <%= link_to 'Destroy Comment', [comment.post, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+               <%# byebug%>
+  <%#= link_to 'edit comment',edit_post_comment_path[comment.post,comment], form: :form%>
+               <%# byebug %>
+               <%#= link_to "Edit", "#EditComment_#{comment.id}", 'data-toggle' => 'modal' %>
+              <!--  <div class="modal fade" id="EditComment_<%= comment.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->
+</p>

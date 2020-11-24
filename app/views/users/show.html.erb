@@ -1,0 +1,6 @@
+<%= @user.email %>
+
+<section class="stats">
+      <%= render '/devise/shared/stats' %>
+    </section>
+    <%= render 'users/follow_form' if user_signed_in? %>

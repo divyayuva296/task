@@ -1,0 +1,14 @@
+<%= form_with model: [@post,@post.comments.build], local: true do |form| %>
+	<p>
+		<%= form.text_field :comments , placeholder: "comment it" %>
+	</p>
+	<p>
+		<%= form.hidden_field :post_id,:value => @post.id %>
+	</p>
+	<p>
+		<%= form.hidden_field :user_id, :value => current_user.id %>
+	</p>
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>

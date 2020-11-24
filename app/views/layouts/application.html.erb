@@ -10,11 +10,15 @@
   </head>
 
   <body>
-    <div class="container-fluid">
-      
-       <%= render 'layouts/header' %>
-        <%= render 'layouts/sidebar' %>
-       <%= yield %>
-    </div>
+   
+      <div class="container-fluid">
+        <%# if user_signed_in? %>
+          <%= render 'layouts/header' %>
+          <%= render 'layouts/sidebar' %>
+          <%= yield %>
+        <%# end %>
+
+      </div>
+
   </body>
 </html>

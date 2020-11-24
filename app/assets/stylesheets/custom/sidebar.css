@@ -5,12 +5,12 @@ body {
 
 .sidenav {
   height: 100%;
-  width: 160px;
+  width: 290px;
   position: fixed;
   z-index: 1;
   top: 46px;
   left: 0;
-  background-color: navy;
+  background-color:#d4cece7a;
   overflow-x: hidden;
   padding-top: 20px;
 }
