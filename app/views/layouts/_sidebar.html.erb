@@ -1,12 +1,25 @@
-<%# if user_signed_in? %>
+<% if user_signed_in? %>
+	
+	<%# byebug %>
+	<%# %>
+		<div class="sidenav">
+			
+			
+			<div>
+				<h3 class="home-side">Home</h3>
+				<div class="icon"><i class="fas fa-ellipsis-h"></i></div>
+			</div>
+			<div>
+				<h6>Menu</h6>
+				<ul>
+					<li><i class="fa fa-home"></i><span>Home</span></li>
+					<li><i class="fa fa-bell"></i> <span>Notification</span></li>
+					<li><i class="fas fa-user-plus"></i><span>Follow</span></li>
+					<li><i class="fa fa-home"></i><span>Home</span></li>
+				</ul>
+				
+			</div>
+		  	
+		</div>
 
-	<!-- <div class="sidenav">
-		
-		<b>Home  <span><i class="fas fa-ellipsis-h"></i></span></b>
-		
-	  	<a href="#about">About</a>
-	  	<a href="#services">Services</a>
-	  	<a href="#clients">Clients</a>
-	  	<a href="#contact">Contact</a>
-	</div> -->
-<%# end %>
+<%end %>

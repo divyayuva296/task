@@ -8,7 +8,11 @@ class LikesController < ApplicationController
     	@post.likes.create(user_id: current_user.id)
     end
     # redirect_to post_path(@post)
-    redirect_to root_path
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js {render 'posts/show.js.erb'}
+    end
+    # redirect_to root_path
   end
 
   def destroy

@@ -1,7 +1,7 @@
 <%= form_with model: [@post,@post.comments.build], local: true do |form| %>
-	<p>
-		<%= form.text_field :comments , placeholder: "comment it" %>
-	</p>
+	<div class="form-input">
+		<%= form.text_field :comments , placeholder: "Write a comment"  %>
+	</div>
 	<p>
 		<%= form.hidden_field :post_id,:value => @post.id %>
 	</p>

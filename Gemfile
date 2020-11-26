@@ -62,3 +62,5 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'cancancan'
+gem 'social-share-button'
+gem 'activity_notification', '~> 2.1', '>= 2.1.4'

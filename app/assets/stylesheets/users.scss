@@ -1,3 +1,116 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.user{
+	display-inline: block;
+	height: 120px;
+	position:relative;
+	top: 1px;
+}
+.show-user{
+	margin-left: 308px;
+	margin-top: 50px;
+}
+b{
+	margin-left: 20px;
+}
+.show-ul{
+	margin-left: 300px;
+	margin-top: 50px;
+	list-style:none;
+}
+.nav-li li{
+	display: inline;
+  padding: 0 1em 0 0;
+}
+
+.user-li:hover{
+	 text-decoration: underline;
+	 color:red;
+}
+.user-li{
+	 padding: 21px;
+    color: #565151;
+}
+hr{
+	color: #d8cece;
+	border: 1px solid;
+}
+.border{
+	color:#989395;
+}
+.border:hover{
+	color:#d80b28 ;
+}
+.user-post-detail{
+	margin-left: 300px;
+}
+.pffl{
+	border:2px solid #80808042;
+	border-radius: 2px;
+	box-shadow: -2px 2px 4px 3px #80808042;
+	border-style:none;
+	height:63px;
+	width:336px;
+}
+h6{
+	color:red;
+	margin-top:10px;
+}
+
+.post{
+	position:relative;
+}
+.follower{
+	position:relative;
+	top: -62px;
+  left: 67px;
+}
+.following{
+	position:relative;
+	top: -122px;
+  left: 166px;
+}
+.like{
+	position:relative;
+	top: -183px;
+  left: 264px;
+}
+.b{
+	color: grey;
+}
+.post-all{
+  position: relative;
+  top: -61px;
+  left: 341px;
+  width: 624px;
+	display-inline:block;
+}
+.post-u{
+	border:2px solid #80808042;
+	border-radius: 2px;
+	box-shadow: 0px 2px 4px 3px #80808042;
+	border-style:none;
+}
+.post-show{
+	margin-left: 15px;
+	margin-top: 30px;
+}
+.post-icon{
+	margin-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 17px;
+  padding-bottom: 10px;
+}
+.like-icon a{
+	color: grey;
+	margin-left: 10px;
+	text-decoration:none;
+}
+
+#up{
+	color: grey;
+}
+span{
+	color:grey;
+}

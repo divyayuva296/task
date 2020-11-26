@@ -10,7 +10,7 @@
    	display-inline:block;
 }
 .home2{
-	background-color: pink;
+	background-color: white;
     height: 600px;
     position: relative;
     top: 30px;
@@ -22,7 +22,8 @@
 	margin:20px;
 	border:2px solid #80808042;
 	border-radius: 2px;
-	box-shadow: 1px 2px  #80808042;
+	box-shadow: -2px 2px 4px 3px #80808042;
+	border-style:none;
 }
 .post_form{
 	margin-top: 10px;
@@ -38,7 +39,71 @@
 	margin:20px;
 	border:2px solid #80808042;
 	border-radius: 2px;
-	box-shadow: 1px 2px  #80808042;
+	box-shadow: -2px 2px 4px 3px #80808042;
+	border-style:none;
 	display-inline:block;
+}
+.form-input{
+	border-style:none;
+	
+}
+
+.user_data a:link {
+	margin-top: 10px;
+	text-decoration:none; 
+}
+.link{
+	color: black;
+}
+	
+.post-data{
+	margin-left: 10px;
+}
+
+.edit-button{
+	
+	margin-top: 10px;
+	margin-left: 190px;
+	border-style: none;
+	color: grey;
+}
+.userdetails{
+	border:2px solid #80808042;
+	border-radius: 2px;
+	box-shadow: 4px 2px 4px 3px #80808042;
+	border-style: none;
+	display-inline:block;
+	position: relative;
+	top: 10px;
+	height: 180px;
 	background-color: white;
+}
+.post-count{
+	position:absolute;
+	left: 20px;
+
+}
+.post-followers{
+	position: absolute;
+	left: 80px;
+
+}
+.post-following{
+	position: absolute;
+	left: 169px;
+	
+}
+.user-details b{
+	margin-left: 10px;
+
+}
+.user-details p{
+	margin-top: 20px;
+}
+
+.follow-heading{
+	margin-top: 30px;
+}
+.follow-para{
+	color: grey;
 }

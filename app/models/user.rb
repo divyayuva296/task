@@ -23,8 +23,17 @@ has_many :followers, through: :passive_relationships, source: :follower
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-acts_as_followable
-acts_as_follower
+  has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
+has_many :followees, through: :followed_users
+
+has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
+  has_many :followers, through: :following_users
+
+
+# acts_as_followable
+# acts_as_follower
+ # acts_as_target email: :email, email_allowed: :confirmed_at
+ acts_as_target
 
 def follow(other_user)
     following << other_user

@@ -6,7 +6,7 @@ body {
 .sidenav {
   height: 100%;
   width: 290px;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   top: 46px;
   left: 0;
@@ -39,4 +39,28 @@ body {
 }
 b{
 	text-align: center
+}
+.home-side{
+  margin-left: 30px;
+}
+.icon {
+  position: absolute;
+  left: 260px;
+  top: 25px;
+  margin-right: 10px;
+ 
+  font-size: 13px;
+  color:grey;
+}
+li{
+  list-style:none;
+  font-size: 14px;
+  margin-left:-10px;
+}
+h6{
+  margin-left: 30px;
+  color: grey;
+}
+span{
+  margin-left:5px;
 }

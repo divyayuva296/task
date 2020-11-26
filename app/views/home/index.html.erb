@@ -11,10 +11,24 @@
 			<% @users.each do |user| %>
 				<% user.posts.each do |post| %>
 					<div class="post_box">
+
 						<div class="user_data">
-							<%= image_tag user.image %>
-							<%= user.username %>		
+
+							<% s = post.user_id %>
+							<%= link_to image_tag(user.image) ,user_path(s), class: "link" %>
+							<%# p = post.user %>
+							<%#= link_to image_tag(user.image) ,user_path(p.id = p.username) %>
+
+
+							<%= link_to  user.username, user_path(s), class: "link" %>	
+							
+								<%# byebug%>
+								<%#= link_to  'user',user_path(s) %>
+
+								
+
 						</div>
+
 						<div class="post-data">
 							<p>
 								<%= post.post %>
@@ -45,9 +59,78 @@
 									<%= link_to post_path(post) do %>
 										<i class="far fa-comment-alt"></i> Comment
 									<% end %>
+
+									<i class="fas fa-redo-alt"></i>Respost
+									<i class="fas fa-quote-right"></i>Quote
+									
+									
+									<a><i class="fas fa-share-alt" data-toggle="modal" data-target="#myModal"></i>Share</a>
+
+<!-- Modal -->
+										<div id="myModal" class="modal fade" role="dialog">
+										  <div class="modal-dialog">
+
+										    <!-- Modal content-->
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <button type="button" class="close" data-dismiss="modal">&times;</button>
+										        <h4 class="modal-title"></h4>
+										      </div>
+										      <div class="modal-body">
+										        <p>
+										        	<%#= social_share_button_tag(@obj) %>
+										        	<%= social_share_button_tag("My Home Page", :url => "http://localhost:3000") %>
+										        </p>
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										      </div>
+										    </div>
+
+										  </div>
+										</div>
+
+							</p>
+
+							<p class="comment-form">
+							
+							<!-- <div class="post_form"><%#= render 'comments/form'%></div> -->
+								<div class="comment_show">
+									<% post.comments.each do |comment| %>
+										<p>
+											<%= comment.comments %>
+										</p>
+										<p>
+											<% if current_user == comment.user %>
+									  		<%= link_to 'Destroy Comment', [comment.post, comment],
+									               method: :delete,
+									               data: { confirm: 'Are you sure?' } %>
+									  	<% end %>
+										</p>
+									<% end %>
+								</div>
+								<div class="comment_form">
+									<%= form_with model: [post,post.comments.build], local: true do |form| %>
+										<div>
+											<span class="post_logo" ><i class="fa fa-user"></i></span>
+											<%= form.text_field :comments , placeholder: "Write a comment",class: "form-input"  %>
+										</div>
+										<p>
+											<%= form.hidden_field :post_id,:value => post.id %>
+										</p>
+										<p>
+											<%= form.hidden_field :user_id, :value => current_user.id %>
+										</p>
+										<p>
+											<%= form.submit "", :style => "display: none;"  %>
+										</p>
+									<% end %>
+								</div>
+							
 							</p>
 							
 						</div>
+						
 					</div>	
 					<% end %>
 			<% end %>
@@ -61,19 +144,47 @@
 	</div>
 <!-- div 2 -->
 	<div class="home2">
-		<div><%= button_to 'edit profile',  edit_user_registration_path %></div>
-		<div><%= link_to 'logout',destroy_user_session_path, method: :delete %></div>
-		<hi>post count</hi>
-		<p>
-			<%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%>
-		</p>
-		<%#= link_to 'follow',relationships_path %>
-		<section class="stats">
-      <%= render '/devise/shared/stats' %>
+		<%= link_to 'logout',destroy_user_session_path, method: :delete %>
+		<%= link_to 'suggestion',suggestion_path %>
+		<div class="userdetails">
+			<%= button_to 'edit profile',  edit_user_registration_path ,class: "edit-button"%>
+
+			<div class="user-details">
+				<% if current_user.present?%>
+					<p>
+						<%= image_tag current_user.image %>
+
+						<b><%= current_user.username.capitalize %></b>
+			
+					</p>
+				
+				<% end %>
+				<div>
+					<div class="post-count">
+						<b><%=current_user.posts.count %></b><br>
+					  <span>Posts</span>
+					</div>
+					<div class="post-followers">
+						<b><%= current_user.followers.count %></b><br>
+						<span>Followers</span>
+					</div>
+					<div class="post-following">
+						<b><%= current_user.followees.count %></b><br>
+						<span>Following</span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="about" style="margin-top: 30px;">
+			<section class="stats">
+      <%#= render '/devise/shared/stats' %>
     </section>
-    <%= render 'users/follow_form' if user_signed_in? %>
-		<%#= link_to "Unfollow", unfollow_user_path(@user) %>
-		<%#= link_to 'follow',follow_user_path(@user) %>
+    <%#= render 'users/follow_form' if user_signed_in? %>
+		</div>
+		<div class="Health"></div>
+		
 	</div>
-  
 <% end %>
+

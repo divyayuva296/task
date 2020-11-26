@@ -1,15 +1,18 @@
-<%= form_with model: [@post],local:true do |form| %>
-	<p>
-		<%#= form.label :post %>
-		<%= form.rich_text_area :post,placeholder: "what's on your mind?" %>
-		<%#= form.text_field :name, class: "name", placeholder: "name" %>
-	</p>
-	<p>
-		<%= form.hidden_field :user_id , :value => current_user.id %>
-		<%# byebug %>
-	</p>
-	<p>
-		<%= form.submit %>
-	</p>
-<% end %>
+<div >
+	<%= form_with model: [@post],local:true do |form| %>
+		<p>
+			<%#= form.label :post %>
+			<%= form.rich_text_area :post,placeholder: "what's on your mind?" %>
+			<%#= form.text_field :name, class: "name", placeholder: "name" %>
+		</p>
+		<p>
+			<%= form.hidden_field :user_id , :value => current_user.id %>
+			<%# byebug %>
+		</p>
+		<p>
+			<%= form.submit id: "post_button" %>
+		</p>
+	<% end %>
+</div>
+
 

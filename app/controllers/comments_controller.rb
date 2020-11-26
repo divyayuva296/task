@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
 	def create
 		@comment = @post.comments.create(comment_params)
 		if @comment.save
-			redirect_to post_path(@post)
+			# redirect_to post_path(@post)
+			redirect_to root_path
 		end
 	end
 

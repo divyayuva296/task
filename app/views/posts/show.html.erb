@@ -1,3 +1,4 @@
+
 <%= @post.post %>
 <%= link_to 'back',posts_path %>
 
@@ -9,10 +10,11 @@
 <% end %>
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
+
 <h1>comments</h1>
 <%= render @post.comments %>
 
 <h1>  Add Comments</h1>
 <%# byebug%>
-<%= link_to 'comment',  '/comments/form'%>
+<%#= link_to 'comment',  '/comments/form'%>
 <%= render 'comments/form' %>

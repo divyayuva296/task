@@ -1,6 +1,116 @@
-<%= @user.email %>
+<div class="user">
+  <div class="show-user">
+    <%=image_tag @user.image %>
+    <b><%= @user.username.capitalize %></b>
+  </div>
+  <div class="show-ul">
+    <ul class="nav-li">
+      <li class="user-li"><a href="#" class="border">Timeline</a></li>
+      <li class="user-li"><a href="#" class="border">Comments</a></li>
+      <li class="user-li"><a href="#" class="border">Photos</a></li>
+      <li class="user-li"><a href="#" class="border">Bookmarks</a></li>
+    </ul>
+  </div>
+   <hr>
+</div>
+<div class="user-post-detail">
+  <div class="pffl">
+    <%# byebug %>
+   
+      <div class="post">
+        <h6><%= @user.posts.count %></h6>
+        <b class="b">Posts</b>
+      </div>
+      <div class="follower">
+        <h6><%= @user.followers.count %></h6>
+        <b class="b">Followers</b>
+      </div>
+      <div class="following">
+        <h6><%= @user.followees.count %></h6>
+        <b class="b">Following</b>
+      </div>
+      <div class="like">
+        <h6><%= @user.likes.count %></h6>
+        <b class="b">Like</b> 
+      </div>
+   
+  </div>
+  <div class="post-all">
+    <% @user.posts.each do |post|%>
+      <div class="post-u">
+        <p>
+            <%= image_tag @user.image %>
 
-<section class="stats">
-      <%= render '/devise/shared/stats' %>
-    </section>
-    <%= render 'users/follow_form' if user_signed_in? %>
+            <b><%= @user.username.capitalize %></b>
+      
+        </p>
+      
+        <div class="post-show">
+          <%= post.post %>
+        </div>
+        <div class="post-icon">
+          <div>
+          <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+            <% if pre_like %>
+              <%= link_to post_like_path(post, pre_like), method: :delete  do %>
+                <i class="far fa-thumbs-up" id="up"></i><span>Like</span>
+              <% end %>
+            <% else %>
+              <%= link_to  post_likes_path(post), method: :post do %>
+                <i class="far fa-thumbs-down" id="down"></i> Unlike
+              <% end %>
+            <% end %>
+            <%= link_to post_path(post) do %>
+              <i class="far fa-comment-alt"></i> Comment
+            <% end %>
+
+            <i class="fas fa-redo-alt"></i>Respost
+            <i class="fas fa-quote-right"></i>Quote
+            <a><i class="fas fa-share-alt" data-toggle="modal" data-target="#myModal"></i>Share</a>
+          </div>
+<!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      <%#= social_share_button_tag(@obj) %>
+                      <%= social_share_button_tag("My Home Page", :url => "http://localhost:3000") %>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </div>  
+      </div>
+     
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
