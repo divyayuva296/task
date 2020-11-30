@@ -1,0 +1,4 @@
+$("#post_like<%= @post.id%>").html("<%= escape_javascript(render partial: 'posts/like_button', locals: {post: @post}) %>");
+debugger
+// $(".post").text("<%= @post.likes.count %><%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%>");
+$("#post_like<%= @post.id%> .post").text('<%= @post.likes.count%>');

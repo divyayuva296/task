@@ -9,21 +9,25 @@ class LikesController < ApplicationController
     end
     # redirect_to post_path(@post)
     respond_to do |format|
-      format.html {redirect_to root_path}
-      format.js {render 'posts/show.js.erb'}
+      format.html { redirect_to root_path }
+      format.js {render 'likes/create.js.erb'}
     end
-    # redirect_to root_path
   end
 
   def destroy
-  if !(already_liked?)
-    flash[:notice] = "Cannot unlike"
-  else
-    @like.destroy
-  end
+    if !(already_liked?)
+      flash[:notice] = "Cannot unlike"
+    else
+
+      @like.destroy
+    end
   # redirect_to post_path(@post)
-  redirect_to root_path
-end
+  # redirect_to  post_path(@post)
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js  {render 'likes/destroy.js.erb'}
+    end
+  end
 
   	private
   	def find_post

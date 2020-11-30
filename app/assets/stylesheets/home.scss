@@ -107,3 +107,45 @@
 .follow-para{
 	color: grey;
 }
+.like-icon{
+	position:relative;
+}
+.comment-icon{
+	position: absolute;
+    left: 118px;
+    margin-top: -23px;
+}
+.index-icon{
+	position: absolute;
+	position: absolute;
+    left: 225px;
+    margin-top: -23px;
+}
+.image{
+	height: 38px;
+    width: 35px;
+    border: 2px solid red;
+}
+.row{
+	margin: 5px;
+}
+.follow{
+	border-radius: 23px;
+    margin-top: 7px;
+  
+    text-align: center;
+    border: 2px solid red;
+    color: red;
+    font-size: 14px;
+    padding: 4px;
+    margin: 5px;
+    width: 84px;
+}
+.b1{
+	position: absolute;
+    left: 56px;
+    color: black;
+}
+.active{
+	background-color: red !important;
+}

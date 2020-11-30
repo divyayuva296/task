@@ -1,0 +1,98 @@
+.follow-button{
+	
+	position: absolute;
+	top: 1px;
+    left: 162px;
+}
+.follow{
+	border-radius: 5px;
+	margin-top: 10px;
+	background-color: navy;
+}
+
+
+<hi>post count</hi>
+		<p>
+			<%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%>
+		</p>
+		<%#= link_to 'follow',relationships_path %>
+		<section class="stats">
+      <%= render '/devise/shared/stats' %>
+    </section>
+    <%= render 'users/follow_form' if user_signed_in? %>
+		<%#= link_to "Unfollow", unfollow_user_path(@user) %>
+		<%#= link_to 'follow',follow_user_path(@user) %>
+
+
+
+
+		<div class="user_details">
+			<%= button_to 'edit profile',  edit_user_registration_path ,class: "edit-button"%>
+	
+			<div><%#= link_to 'logout',destroy_user_session_path, method: :delete %></div>
+
+		
+
+		
+	</div>
+  
+<% end %>
+
+
+
+.user-details b{
+	margin-left: 10px;
+}
+
+
+
+.user_details{
+	border:2px solid #80808042;
+	border-radius: 2px;
+	box-shadow: 1px 2px  #80808042;
+	display-inline:block;
+}
+
+
+box-shadow: 0 9px 0px 0px white, 0 -9px 0px 0px white, 12px 0 15px -4px rgba(31, 73, 125, 0.8), -12px 0 15px -4px rgba(31, 73, 125, 0.8);
+
+
+box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8), -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+
+
+
+debugger
+$("#post_unlike").html("<%= escape_javascript(render partial: 'posts/like_button') %>");
+
+$(".post").text("<%= @post.likes.count %><%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%>");
+
+
+
+<div id="like_or_unlike">
+<% if @project.liked?(current_user) %>
+  <% like = @project.likes.where(:user_id => current_user.id).first %>
+  <div class="unlike_button">
+  <%= link_to "UnLike", like_path(id: like.id, project_id: @project.id), :method => :delete %>
+  </div>
+<% else %>
+  <%= link_to "Like", project_likes_path(@project), :remote => true, :method => :post %>
+<% end %>
+</div>
+
+
+
+
+<% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+
+	 <div id="post_unlike"> 
+<%# byebug %> 
+  	<%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete,remote: true %>
+	</div>
+<% else %>
+	<div id="post_like<%=@post.id %>">
+  	<%= button_to 'Like', post_likes_path(@post), method: :post,remote: true%>
+	</div>
+<% end %>
+
+<p class="post"><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>

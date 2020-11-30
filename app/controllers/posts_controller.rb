@@ -29,7 +29,9 @@ class PostsController < ApplicationController
 
 	def update
 		if @post.update(post_params)
-			redirect_to root_path
+			# redirect_to root_path
+			redirect_to params[:postredirect].nil? ? root_path : post_path(@post)
+			byebug
 		else
 			render 'edit'
 		end

@@ -2,13 +2,22 @@
 <%= @post.post %>
 <%= link_to 'back',posts_path %>
 
-<% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-<% if pre_like %>
-  <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-<% else %>
-  <%= button_to 'Like', post_likes_path(@post), method: :post %>
-<% end %>
-<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
+<%#pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+<%# if pre_like %>
+
+	 <!-- <div id="post_unlike">  -->
+<%# byebug %> 
+  	<%#= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete,remote: true %>
+	<!-- </div> -->
+<%# else %>
+	<div id="post_like<%=@post.id %>">
+  	<%#= button_to 'Like', post_likes_path(@post), method: :post,remote: true%>
+  	<%= render 'posts/like_button' %>
+	</div>
+<%# end %>
+
+<p class="post"><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
 
 <h1>comments</h1>

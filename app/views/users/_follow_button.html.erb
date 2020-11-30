@@ -1,0 +1,8 @@
+<%# @user = User.find(user)%>
+<% if current_user != @user %>
+<% if current_user.followees.include?(@user) %>
+		   							<h5><%= button_to "Following",unfollow_user_path(@user), method: "POST" ,class: "follow",remote: true%></h5>
+								<% else %>
+		   							<h5><%= button_to "Follow", follow_user_path(@user),  method: "POST", class: "follow" ,remote: true %></h5>
+								<% end %>
+								<% end %>

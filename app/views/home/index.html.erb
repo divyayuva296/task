@@ -1,3 +1,4 @@
+  <%= render 'layouts/sidebar' %>
 <% if user_signed_in? %>
 <!-- div 1 -->
 	<div class="home" >
@@ -8,19 +9,19 @@
 		</div>
 
 		<div class="post_div">
-			<% @users.each do |user| %>
-				<% user.posts.each do |post| %>
+			<%# @users.each do |user| %>
+				<% @posts.each do |post| %>
 					<div class="post_box">
 
 						<div class="user_data">
 
 							<% s = post.user_id %>
-							<%= link_to image_tag(user.image) ,user_path(s), class: "link" %>
+							<%= link_to image_tag(post.user.image) ,user_path(s), class: "link" %>
 							<%# p = post.user %>
 							<%#= link_to image_tag(user.image) ,user_path(p.id = p.username) %>
 
 
-							<%= link_to  user.username, user_path(s), class: "link" %>	
+							<%= link_to  post.user.username, user_path(s), class: "link" %>	
 							
 								<%# byebug%>
 								<%#= link_to  'user',user_path(s) %>
@@ -40,31 +41,36 @@
 								<% end %>
 							</p>
 							<p>
-								<%#= link_to 'new', new_post_path %>
-									<!-- <i class="far fa-thumbs-up"></i> Like -->
-									
-
+								<!-- <p class="post"><%#= post.likes.count %> <%#= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p> -->
+								<div id="post_like<%=post.id %>" class="like-icon">
 									<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-										<% if pre_like %>
-  											<%= link_to post_like_path(post, pre_like), method: :delete  do %>
-  												<i class="far fa-thumbs-up"></i> Like
-  											<% end %>
-  									
-										<% else %>
-  											<%= link_to  post_likes_path(post), method: :post do %>
-  												<i class="far fa-thumbs-down"></i> Unlike
-  										<% end %>
+									<% if pre_like %>
+										<%= link_to  post_like_path(post, pre_like), method: :delete,remote: true do%>
+											<i class="far fa-thumbs-up"></i> Like
+											<%#= post.likes.count%>
+  									<% end %>
+									<% else %>
+										<%= link_to  post_likes_path(post), method: :post ,remote: true do%>
+	 										<i class="far fa-thumbs-down"></i> Unlike
+										<% end %>
 									<% end %>
+								</div>
 
+								
+								<div class="comment-icon">
 									<%= link_to post_path(post) do %>
 										<i class="far fa-comment-alt"></i> Comment
 									<% end %>
-
-									<i class="fas fa-redo-alt"></i>Respost
+								</div>
+								<div class="index-icon">
+									<%= link_to edit_post_path(post), method: :get do %>
+										<i class="fas fa-redo-alt"></i>Respost
+									<% end %>
 									<i class="fas fa-quote-right"></i>Quote
 									
 									
 									<a><i class="fas fa-share-alt" data-toggle="modal" data-target="#myModal"></i>Share</a>
+								</div>
 
 <!-- Modal -->
 										<div id="myModal" class="modal fade" role="dialog">
@@ -133,7 +139,7 @@
 						
 					</div>	
 					<% end %>
-			<% end %>
+			<%# end %>
 		</div>
 
 		
@@ -179,9 +185,9 @@
 
 		<div class="about" style="margin-top: 30px;">
 			<section class="stats">
-      <%#= render '/devise/shared/stats' %>
-    </section>
-    <%#= render 'users/follow_form' if user_signed_in? %>
+      			<%#= render '/devise/shared/stats' %>
+    		</section>
+    		<%#= render 'users/follow_form' if user_signed_in? %>
 		</div>
 		<div class="Health"></div>
 		

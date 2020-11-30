@@ -9,7 +9,9 @@ class CommentsController < ApplicationController
 		@comment = @post.comments.create(comment_params)
 		if @comment.save
 			# redirect_to post_path(@post)
-			redirect_to root_path
+			# redirect_to root_path
+			redirect_to params[:dashboardredirect].nil? ? root_path : post_path(@post)
+
 		end
 	end
 
@@ -17,7 +19,6 @@ class CommentsController < ApplicationController
 		# @comment = @post.comments.find(params[:id])
 	end
 	def show
-		byebug
 		# @comment = @post.comments.find(params[:id])
 	end
 

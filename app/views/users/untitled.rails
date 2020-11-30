@@ -28,3 +28,19 @@
   
 </div>
 
+.post{
+  position:absolute;
+  left: -18px;
+}
+.follower{
+  position:absolute;
+  left: 50px;
+}
+.following{
+  position:absolute;
+  left:147px;
+}
+.like{
+  position:absolute;
+  left: 245px;
+}

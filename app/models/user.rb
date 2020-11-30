@@ -35,17 +35,17 @@ has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
  # acts_as_target email: :email, email_allowed: :confirmed_at
  acts_as_target
 
-def follow(other_user)
-    following << other_user
-  end
+# def follow(other_user)
+#     following << other_user
+#   end
  
-  # Unfollows a user.
-  def unfollow(other_user)
-    following.delete(other_user)
-  end
+#   # Unfollows a user.
+#   def unfollow(other_user)
+#     following.delete(other_user)
+#   end
  
-  # Returns true if the current user is following the other user.
-  def following?(other_user)
-    following.include?(other_user)
-  end
+#   # Returns true if the current user is following the other user.
+#   def following?(other_user)
+#     following.include?(other_user)
+#   end
 end

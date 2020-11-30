@@ -4,30 +4,32 @@
 	<% @users.each do |user| %>
 	<div class="row">
 		<%#%>
-			<div class="col-md-3 follow-img">
-					<p>
-						<%= image_tag user.image %>
+			<div class="col-md-6 follow-img">
+				<% if current_user != user %>
+					<div class="row">
+						<div class="col-md-7">
+							<%= image_tag user.image ,class: "image" %>
+							<b class="b1"><%= user.username.capitalize %></b>
+						</div>
+						<!-- <div class="col-md-4" style="background-color:yellow"> -->
 
-						<b><%= current_user.username.capitalize %></b>
+							
 			
-					</p>
-					<div>
-						<%if current_user.followees.include?(user) %>
-						<%# byebug %>
-						following
-							<%#= button_to 'Following',follow_user_path ,method: :post%>
-						<% else %>
-							<%= button_to 'Follow',follow_user_path , method: :post %>
-						<% end %>
+						<!-- </div> -->
+						<div class="col-md-5">
+							<div id="follow<%= user.id %>" class="follow-button">
+								<%# byebug %>
+								<%#= render 'users/follow_button' %>
+								<% if current_user.followees.include?(user) %>
+		   							<h5><%= button_to "Following",unfollow_user_path(user), method: "POST" ,class: "follow",remote: true%></h5>
+								<% else %>
+		   							<h5><%= button_to "Follow", follow_user_path(user),  method: "POST", class: "follow" ,remote: true %></h5>
+								<% end %>
+							</div>
+						</div>
 					</div>
+				<% end %>
 			</div>
-			<div class="col-md-3 follow-img">
-				hello
-			</div>
-		<% #end %>
 	</div>
-		
-
-
 	<% end %>
 </div>

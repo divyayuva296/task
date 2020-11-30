@@ -1,0 +1,13 @@
+
+$("#follow<%= @user.id %>").html("<%= escape_javascript(render partial: 'users/follow_button', locals: {post: @user}) %>");
+// $(".follow<%= @user.id%>").click(function(){
+// 	$(this).addClass('bf');
+// });
+
+
+
+$('.follow').on("click",function(){  
+  //$('button').not(this).removeClass();
+  $(this).toggleClass('active');
+  
+  });

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     	@title = "Followers"
     	@user = User.find(params[:id])
     	@users = @user.followers
-    	byebug
+ 
     	# render 'show_follow'
     	redirect_to user_path
   	end
@@ -25,12 +25,20 @@ class UsersController < ApplicationController
     def follow
       @user = User.find(params[:id])
       current_user.followees << @user
-      redirect_to user_path(@user)
+      respond_to do |format|
+        format.html { redirect_to root_path(@user) }
+        format.js {render 'users/follow.js.erb'}
+      end
+      # redirect_to suggestion_path(@user)
     end
     def unfollow
       @user = User.find(params[:id])
       current_user.followed_users.find_by(followee_id: @user.id).destroy
-      redirect_to user_path(@user)
+      # redirect_to suggestion_path(@user)
+      respond_to do |format|
+        format.html { redirect_to root_path(@user) }
+        format.js {render 'users/follow.js.erb'}
+      end
     end
 
 end

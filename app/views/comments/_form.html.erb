@@ -9,6 +9,9 @@
 		<%= form.hidden_field :user_id, :value => current_user.id %>
 	</p>
 	<p>
+		<input type="hidden" name="dashboardredirect" value="1"/> 
+	</p>
+	<p>
 		<%= form.submit %>
 	</p>
 <% end %>
