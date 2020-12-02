@@ -1,5 +1,5 @@
 <div >
-	<%= form_with model: [@post],local:true do |form| %>
+	<%= form_with model: [@post],remote:true do |form| %>
 		<p>
 			<%#= form.label :post %>
 			<%= form.rich_text_area :post,placeholder: "what's on your mind?" %>

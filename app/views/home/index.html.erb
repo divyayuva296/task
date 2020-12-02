@@ -2,6 +2,10 @@
 <% if user_signed_in? %>
 <!-- div 1 -->
 	<div class="home" >
+		<!-- <div id="msg"> -->
+<!-- </div> -->
+<div id="notifications"> hiii</div>
+
 		<div class="post_index">
 			<%#= render 'views/posts/form' %>
 			<span class="post_logo" ><i class="fa fa-user"></i>    Create Post</span>
@@ -16,7 +20,7 @@
 						<div class="user_data">
 
 							<% s = post.user_id %>
-							<%= link_to image_tag(post.user.image) ,user_path(s), class: "link" %>
+							<%= link_to image_tag(post.user.image) ,user_path(s), class: "link",id: "image" %>
 							<%# p = post.user %>
 							<%#= link_to image_tag(user.image) ,user_path(p.id = p.username) %>
 
@@ -46,12 +50,12 @@
 									<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
 									<% if pre_like %>
 										<%= link_to  post_like_path(post, pre_like), method: :delete,remote: true do%>
-											<i class="far fa-thumbs-up"></i> Like
+											<i class="far fa-thumbs-up"></i> unlike
 											<%#= post.likes.count%>
   									<% end %>
 									<% else %>
 										<%= link_to  post_likes_path(post), method: :post ,remote: true do%>
-	 										<i class="far fa-thumbs-down"></i> Unlike
+	 										<i class="far fa-thumbs-down"></i> like
 										<% end %>
 									<% end %>
 								</div>
@@ -66,10 +70,11 @@
 									<%= link_to edit_post_path(post), method: :get do %>
 										<i class="fas fa-redo-alt"></i>Respost
 									<% end %>
-									<i class="fas fa-quote-right"></i>Quote
-									
-									
+							
+									<i class="fas fa-quote-right" id="quote"></i>Quote
+								
 									<a><i class="fas fa-share-alt" data-toggle="modal" data-target="#myModal"></i>Share</a>
+							
 								</div>
 
 <!-- Modal -->
@@ -116,21 +121,8 @@
 									<% end %>
 								</div>
 								<div class="comment_form">
-									<%= form_with model: [post,post.comments.build], local: true do |form| %>
-										<div>
-											<span class="post_logo" ><i class="fa fa-user"></i></span>
-											<%= form.text_field :comments , placeholder: "Write a comment",class: "form-input"  %>
-										</div>
-										<p>
-											<%= form.hidden_field :post_id,:value => post.id %>
-										</p>
-										<p>
-											<%= form.hidden_field :user_id, :value => current_user.id %>
-										</p>
-										<p>
-											<%= form.submit "", :style => "display: none;"  %>
-										</p>
-									<% end %>
+									
+									 <%= render 'comments/form', post: post %>
 								</div>
 							
 							</p>
@@ -158,7 +150,7 @@
 			<div class="user-details">
 				<% if current_user.present?%>
 					<p>
-						<%= image_tag current_user.image %>
+						<%= image_tag current_user.image, id: "image" %>
 
 						<b><%= current_user.username.capitalize %></b>
 			

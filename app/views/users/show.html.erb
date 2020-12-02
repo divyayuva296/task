@@ -1,6 +1,6 @@
 <div class="user">
   <div class="show-user">
-    <%=image_tag @user.image %>
+    <%=image_tag @user.image, id: "image" %>
     <b><%= @user.username.capitalize %></b>
   </div>
   <div class="show-ul">
@@ -39,7 +39,7 @@
     <% @user.posts.each do |post|%>
       <div class="post-u">
         <p>
-            <%= image_tag @user.image %>
+            <%= image_tag @user.image ,id: "image"%>
 
             <b><%= @user.username.capitalize %></b>
       

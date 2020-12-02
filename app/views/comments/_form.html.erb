@@ -1,17 +1,19 @@
-<%= form_with model: [@post,@post.comments.build], local: true do |form| %>
-	<div class="form-input">
-		<%= form.text_field :comments , placeholder: "Write a comment"  %>
-	</div>
-	<p>
-		<%= form.hidden_field :post_id,:value => @post.id %>
-	</p>
-	<p>
-		<%= form.hidden_field :user_id, :value => current_user.id %>
-	</p>
-	<p>
-		<input type="hidden" name="dashboardredirect" value="1"/> 
-	</p>
-	<p>
-		<%= form.submit %>
-	</p>
-<% end %>
+<%= form_with model: [post,post.comments.build], local: true do |form| %>
+										<div>
+											<span class="post_logo" ><i class="fa fa-user"></i></span>
+											<%= form.text_field :comments , placeholder: "Write a comment",class: "form-input"  %>
+										</div>
+										<p>
+											<%= form.hidden_field :post_id,:value => post.id %>
+										</p>
+										<p>
+											<%= form.hidden_field :user_id, :value => current_user.id %>
+										</p>
+										<p>
+											<%= form.submit "", :style => "display: none;"  %>
+										</p>
+									<% end %>
+									<%# post.comments.each do |comment|%>
+
+									 <%#= render 'comments/form', post: post %>
+									<%# end %>

@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   	# byebug
   	# @post = Post.find(params[:post_id])
   	# @comment = @post.comments.new
-  	# @comment = @post.comments.new
+  	@comment = Comment.new
   end
 
   def suggestion

@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
 			# redirect_to post_path(@post)
 			# redirect_to root_path
 			redirect_to params[:dashboardredirect].nil? ? root_path : post_path(@post)
-
 		end
 	end
 

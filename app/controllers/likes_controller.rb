@@ -7,6 +7,9 @@ class LikesController < ApplicationController
   	else
     	@post.likes.create(user_id: current_user.id)
     end
+  byebug
+    # ActionCable.server.broadcast "notification",post: @post.post
+    # @noti = Notification.create(recipient: user, user: User.last, action: "followed",notifiable: @post.likes)
     # redirect_to post_path(@post)
     respond_to do |format|
       format.html { redirect_to root_path }
