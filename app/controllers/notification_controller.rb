@@ -7,7 +7,7 @@ class NotificationController < ApplicationController
   end
 
   def read
-  	byebug
+  	# byebug
     @notifications = Notification.where(recipient: current_user).unread
     @notifications.update_all(read_at: Time.zone.now)
     render json: {success: true}

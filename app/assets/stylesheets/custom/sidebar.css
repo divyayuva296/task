@@ -75,10 +75,31 @@ span{
  margin-left: -7px;
 
 }
-.dropdown-menu{
-  width: 300px;
-  margin-left: 51px;
+#sidebar li{
+  margin-left: 10px;
+  display: inline-block;
 }
+
+#d select{
+    /*display: none;*/
+    -moz-appearance: none; 
+        /* for Safari, Chrome, Opera */ 
+        -webkit-appearance: none; 
+}
+#sidebar{
+  /*background-color: yellow;*/
+    /* width: 200px; */
+    width: 245px;
+  border-radius: 3px;
+  }
 /*.dropdown-menu li{
   margin-left: 4px;
 }*/
+#a{
+  /*background-color: navy;*/
+    /*position: relative;*/
+    /* left: 29px; */
+    position: relative;
+    left: -16px;
+    font-size: 13px;
+}

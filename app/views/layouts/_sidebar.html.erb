@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 	
-	<%# byebug %>
+	<%# notification.count %>
 	<%# %>
 		<div class="sidenav">
 			
@@ -12,40 +12,89 @@
 			<div>
 				<h6>Menu</h6>
 				<ul>
-					<li><i class="fa fa-home"></i><span>Home</span></li>
+					<li><a href="http://localhost:3000/" id="a"><i class="fa fa-home"></i><span>Home</span></a></li>
 					<!-- <li><i class="fa fa-bell"></i> <span>Notification</span> -->
 						<%#= link_to "#", :class => "dropdown-toggle notifications_icon", :'data-toggle' => "dropdown" do %>
   <!-- <span class="notification_badge"><%#= find_unread_notifications_count(current_user) %></span> -->
 <%# end %>
-<div id="notifications"></div>
-						<div class="dropdown">
-					<%#= link_to notification_index_path do %>
-						<li id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i><sup><span class="badge badge-light">5</span></sup><span class="noti">Notification</span>
-							<!-- <span  id="notification-counter"><%#= notification.count %></span> --></li>
-					<%# end %>
+					<!-- <li class="dropdown" data-behaviour="notifications">
+						<a class="dropdown-toggle" data-toggle="dropdown" type="button" aria-expanded="false" id="d"><i class="fa fa-bell"></i><span>Notification</span>
+						</a>
+						<ul id="notifications" class="dropdown-menu" data-behaviour="notification-items">
+							<li class=dropdown-header></li>
+						</ul>
+
+					</li> -->
+						
+						<!-- <div id="notifications"></div> -->
+						<!-- <div class="dropdown"> -->
+								<%#= link_to notification_index_path do %>
+						<li class="dropdown" data-behaviour="notifications">
+							<a  id="a" data-toggle="dropdown"  aria-expand="false" aria-haspopup="true"  data-notifications='<%= render template: "notifications/index", formats: [:json] %>'><i class="fa fa-bell"></i><sup><span class="badge badge-light" data-behaviour="unread-count">
+								<%#= @notifications.count%>	
+								</span></sup><span class="noti">Notification</span>
+							</a>
+	  					<ul id="notifications" class="dropdown-menu" data-behaviour="notification-items">
+							<li class=dropdown-header>
+							</li>
+						</ul>
+					</li>
+				
+					<li class="dropdown" data-behaviour="notification" data-notification='<%= render template: "notifications/index", formats: [:json] %>'>
+							<a  id="a"  data-behaviour="notification-link" id="dropdownMenu1" data-toggle="dropdown"  aria-haspopup="true" aria-expand="false" >
+								<i class="fa fa-bell"></i><sup><span class="badge badge-light" data-behaviour="unread-count">
+								<%#= @notifications.count%>	
+							</span></sup><span class="noti">Notification</span></a>
+
+	  					<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+            <!--
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            -->
+          	</div>
+						</ul>
+					</li>
+				
+				
+	  					
 					
-  <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-    <!-- Dropdown button -->
-  <!-- </button> -->
-  	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-  		<!-- <li> -->
-				<% @notifications.each do |notification| %>
-					<%= notification.recipient.username%>  <%= notification.action %>
-						<span><%= notification.created_at.strftime("%d %b.%Y") %></span><br>
-				<% end %>
-			<!-- </li> -->
 
-  	</div>
-	</div>
-
-
-
+<!--  <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%#= render template: "notifications/index", formats: [:json] %>'>
+          <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa_bell"><%= %> </i><span data-behavior="unread-count"></span>
+          </a>
+         <ul id="notifications" class="dropdown-menu" data-behaviour="notification-items">
+							<li class=dropdown-header>
+								<%#= @notifications.each do |notification| %>
+								<%# end %>
+								
+							</li>
+						</ul>
+        </li>
+ -->
 
 
 					<!-- </li> -->
-					<li><i class="fas fa-user-plus"></i><span>Follow</span></li>
-					<li><i class="fa fa-home"></i><span>Home</span></li>
+					<li><a href="#" id="a"><i class="fas fa-user-plus"></i><span>Follow</span></a></li>
+					<li><a href="#" id="a"><i class="fa fa-home"></i><span>Home</span></a></li>
+
+
+
+					<li class="nav-item " data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+          	<a class=" nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%# = icon("bell") %> <i class="fa fa-bell"></i><span data-behavior="unread-count"></span>
+          	</a>
+          	<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+            <!--
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            -->
+          	</div>
+        	</li>
 				</ul>
+
 				
 			</div>
 		  	

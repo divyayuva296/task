@@ -1,6 +1,8 @@
 <li>
-	<% @notifications.each do |notification| %>
+	<%# @notifications.each do |notification| %>
+
+	<%#byebug %>
 	<%= notification.recipient.username%>  <%= notification.action %>
 	<span><%= notification.created_at.strftime("%d %b.%Y") %></span><br>
-	<% end %>
+	<%# end %>
 </li>

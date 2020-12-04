@@ -8,7 +8,7 @@ class NotificationRelayJob < ApplicationJob
   	# binding.pry
     # Do something later
     # binding.pry
-    html = ApplicationController.render partial: "/notification/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html]
+    html = ApplicationController.render partial: "/notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html]
     # (users.uniq - [notification.user_id]).each do |user|
    # binding.pry
    	ActionCable.server.broadcast "notification:#{notification.user_id}", {html: html}

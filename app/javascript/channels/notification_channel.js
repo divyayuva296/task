@@ -16,7 +16,7 @@ consumer.subscriptions.create("NotificationChannel",{
     
      console.log(data);
        $("#notifications").prepend(data.html);
-       debugger
+       // debugger
      
  
   }

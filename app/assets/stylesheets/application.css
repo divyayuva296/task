@@ -16,6 +16,7 @@
  *= require_self
  */
  @import 'bootstrap/dist/css/bootstrap';
+ @import "flatpickr/dist/flatpickr.css";
   @import "social-share-button";
 
  $fa-font-path: '@fortawesome/fontawesome-free/webfonts';

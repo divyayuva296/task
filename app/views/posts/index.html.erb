@@ -1,4 +1,8 @@
 <div style='margin-left:300px'>
+	<input data-provide="datepicker" id="example">
+	<script>
+		$('#example').datepicker();
+		</script>
 	<% @posts.each do |post| %>
 		<p>
 			<%= post.post %>
