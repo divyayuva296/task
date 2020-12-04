@@ -21,8 +21,8 @@ class Post < ApplicationRecord
   def notification
     users = User.all
     (users.uniq- [self.user]).each do |user|
-      noti = Notification.create(recipient: user,user: self.user,action: "posted",notifiable: self)
-      NotificationRelayJob.set(wait: 10.seconds).perform_later(noti)
+      notification = Notification.create(recipient: self.user,user: user,action: "posted",notifiable: self)
+      # NotificationRelayJob.set(wait: 10.seconds).perform_later(notification)
     end
   end
 end

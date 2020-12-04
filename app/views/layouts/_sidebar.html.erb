@@ -13,7 +13,36 @@
 				<h6>Menu</h6>
 				<ul>
 					<li><i class="fa fa-home"></i><span>Home</span></li>
-					<li><i class="fa fa-bell"></i> <span>Notification</span></li>
+					<!-- <li><i class="fa fa-bell"></i> <span>Notification</span> -->
+						<%#= link_to "#", :class => "dropdown-toggle notifications_icon", :'data-toggle' => "dropdown" do %>
+  <!-- <span class="notification_badge"><%#= find_unread_notifications_count(current_user) %></span> -->
+<%# end %>
+<div id="notifications"></div>
+						<div class="dropdown">
+					<%#= link_to notification_index_path do %>
+						<li id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i><sup><span class="badge badge-light">5</span></sup><span class="noti">Notification</span>
+							<!-- <span  id="notification-counter"><%#= notification.count %></span> --></li>
+					<%# end %>
+					
+  <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+    <!-- Dropdown button -->
+  <!-- </button> -->
+  	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  		<!-- <li> -->
+				<% @notifications.each do |notification| %>
+					<%= notification.recipient.username%>  <%= notification.action %>
+						<span><%= notification.created_at.strftime("%d %b.%Y") %></span><br>
+				<% end %>
+			<!-- </li> -->
+
+  	</div>
+	</div>
+
+
+
+
+
+					<!-- </li> -->
 					<li><i class="fas fa-user-plus"></i><span>Follow</span></li>
 					<li><i class="fa fa-home"></i><span>Home</span></li>
 				</ul>

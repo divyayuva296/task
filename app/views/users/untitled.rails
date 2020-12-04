@@ -44,3 +44,30 @@
   position:absolute;
   left: 245px;
 }
+
+
+index.json.builder
+json.array! @notifications do |notification|
+  json.id notification.id
+  json.unread !notification.read_at?
+  json.template render partial: "notification/#{notification.notifiable_type.underscore.plurize}/#{notification.action}",locals: {notification: notification}, formats: [:html]
+end
+
+index.html.erb
+<h1>Notification</h1>
+<%= render "notification_center", notifications: @notifications %>
+<div id="notifications"> </div>
+
+
+notification_center.html.erb
+<ul class="notification">
+  <div id="notificationContainer">
+    <div id="notificationTitle">Notifications</div>
+    <div id="notificationsBody" class="notifications">
+      <ul id="notificationList">
+        <%= render 'notification/notification' %>
+      </ul>
+    </div>
+    <div id="notificationFooter"></div>
+  </div>
+</ul>

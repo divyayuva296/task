@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   	# @post = Post.find(params[:post_id])
   	# @comment = @post.comments.new
   	@comment = Comment.new
+    @notifications = Notification.where(user: current_user).recent
   end
 
   def suggestion

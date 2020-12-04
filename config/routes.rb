@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+mount Sidekiq::Web => '/sidekiq'
+mount ActionCable.server, at: '/cable'
   get 'notification/index'
   devise_for :users
   get 'home/index'
@@ -8,7 +11,11 @@ Rails.application.routes.draw do
   	resources :comments
   	resources :likes
   end
-  resources :notifications
+  resources :notifications, only: [:index] #do
+    #  collection do
+    #   post :read
+    # end
+  # end
   resources :relationships, only: [:create, :destroy]
   resources :users, only: [:show] do
   	member do
