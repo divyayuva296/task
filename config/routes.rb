@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 mount Sidekiq::Web => '/sidekiq'
 mount ActionCable.server, at: '/cable'
   # get 'notification/index'
-  devise_for :users
+ devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   get 'home/index'
   root to: "home#index"
   get '/suggestion', to: 'home#suggestion'

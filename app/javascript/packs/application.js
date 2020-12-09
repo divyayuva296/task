@@ -14,7 +14,7 @@ require("flatpickr")
 import flatpickr from "flatpickr";
 // require('jquery')
 require("packs/notification.js")
-require("packs/noti.js")
+// require("packs/noti.js")
 import "bootstrap"
 
 import "../trix-editor-overrides"

@@ -42,9 +42,7 @@
 				
 					<li class="dropdown" data-behaviour="notification" data-notification='<%= render template: "notifications/index", formats: [:json] %>'>
 							<a  id="a"  data-behaviour="notification-link" id="dropdownMenu1" data-toggle="dropdown"  aria-haspopup="true" aria-expand="false" >
-								<i class="fa fa-bell"></i><sup><span class="badge badge-light" data-behaviour="unread-count">
-								<%#= @notifications.count%>	
-							</span></sup><span class="noti">Notification</span></a>
+								<i class="fa fa-bell"></i><span  class= "badge badge-light"data-behavior="unread-count"></span><span class="noti">Notification</span></a>
 
 	  					<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
             <!--

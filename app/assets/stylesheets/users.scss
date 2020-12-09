@@ -59,22 +59,20 @@ h6{
 }
 
 .post{
-	position:relative;
+	position:absolute;
 }
 .follower{
-	position:relative;
-	top: -62px;
-  left: 67px;
+	position:absolute;
+	left: 373px;
 }
 .following{
-	position:relative;
-	top: -122px;
-  left: 166px;
+	position: absolute;
+  left: 467px
+	
 }
 .like{
-	position:relative;
-	top: -183px;
-  left: 264px;
+	position:absolute;
+	left: 561px;
 }
 .b{
 	color: grey;
@@ -116,4 +114,25 @@ span{
 }
 #down{
 	color: grey;
+}
+.comment{
+	position:absolute;
+	top: 93px;
+	left: 88px;
+}
+.repost{
+	position:absolute;
+	    top: 94px;
+    left: 183px;
+}
+.quote{
+	position:absolute;
+	top: 93px;
+  left: 264px;
+}
+.share{
+	position:absolute;
+	top: 93px;
+    left: 320px;
+
 }

@@ -16,6 +16,17 @@ consumer.subscriptions.create("NotificationChannel",{
     
      console.log(data);
        $("#notifications").prepend(data.html);
+       // $("[data-behavior='unread-count']").text(0);
+       // $.ajax({
+        // url: '/notifications/mark_as_read',
+        // method: 'POST',
+        // data: {"notifications": notifications},
+        // success: function(date){
+        //   var data = JSON.parse(data);
+        //   console.log(data["notifications"]);
+        // }
+
+       // });
        // debugger
      
  

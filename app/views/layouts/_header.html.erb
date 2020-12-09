@@ -64,7 +64,9 @@
   </ul>
   <div class='image'>
     <!-- <img src="/assets/avatar2.png" id="image"> -->
-    <%=image_tag current_user.image ,id: "image" %>
+    <%#=image_tag current_user.image ,id: "image" %>
   </div>
   </nav>
+  <% else %>
+  <%#= link_to "Sign in with Linkedin",user_omniauth_authorize_path(:linkedin) %>
 <% end %>

@@ -5,7 +5,8 @@ class HomeController < ApplicationController
   	# @user = User.find(3)
   	@posts = Post.all
   	@users = User.all
-  	# byebug
+  	 # @post1 = Post.order(id: :asc).offset(params[:index]).limit(1)
+# byebug
   	# @post = Post.find(params[:post_id])
   	# @comment = @post.comments.new
   	@comment = Comment.new

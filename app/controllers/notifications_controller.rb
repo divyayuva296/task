@@ -5,13 +5,12 @@ class NotificationsController < ApplicationController
   	@notifications = Notification.where(user: current_user).recent
   	# @notifications = Notification.where(user: current_user)
   	# byebug
-  	# render json: @notifications
+  	render json: @notifications
   	end
   	# def show
   	# end
 
   def mark_as_read
-  	
     @notifications = Notification.where(user: current_user).unread
     @notifications.update_all(read_at: Time.zone.now)
     render json: {success: true}

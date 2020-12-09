@@ -14,18 +14,18 @@
    <hr>
 </div>
 <div class="user-post-detail">
-  <div class="pffl">
+  <div class="pffl" >
     <%# byebug %>
    
-      <div class="post">
+      <div class="post" >
         <h6><%= @user.posts.count %></h6>
-        <b class="b">Posts</b>
+        <b class="b">Post</b>
       </div>
-      <div class="follower">
+      <div class="follower" >
         <h6><%= @user.followers.count %></h6>
         <b class="b">Followers</b>
       </div>
-      <div class="following">
+      <div class="following" >
         <h6><%= @user.followees.count %></h6>
         <b class="b">Following</b>
       </div>
@@ -50,23 +50,35 @@
         </div>
         <div class="post-icon">
           <div>
-          <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-            <% if pre_like %>
-              <%= link_to post_like_path(post, pre_like), method: :delete  do %>
-                <i class="far fa-thumbs-up" id="up"></i><span>Like</span>
+          <%# pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+            <%# if pre_like %>
+              <%#= link_to post_like_path(post, pre_like), method: :delete  do %>
+                <!-- <i class="far fa-thumbs-up" id="up"></i><span>Like</span> -->
+              <%# end %>
+            <%# else %>
+              <%#= link_to  post_likes_path(post), method: :post do %>
+                <!-- <i class="far fa-thumbs-down" id="down"></i> Unlike -->
+              <%# end %>
+            <%# end %>
+            <div id="post_like<%=post.id %>">
+              <% @post = post %>
+              <%= render 'posts/like_button' , :locals => {:post => @post}%>
+            </div>
+            <div class="comment">
+              <%= link_to post_path(post) do %>
+                <i class="far fa-comment-alt"></i> Comment
               <% end %>
-            <% else %>
-              <%= link_to  post_likes_path(post), method: :post do %>
-                <i class="far fa-thumbs-down" id="down"></i> Unlike
-              <% end %>
-            <% end %>
-            <%= link_to post_path(post) do %>
-              <i class="far fa-comment-alt"></i> Comment
-            <% end %>
+            </div>
+            <div class="repost">
 
-            <i class="fas fa-redo-alt"></i>Respost
-            <i class="fas fa-quote-right"></i>Quote
-            <a><i class="fas fa-share-alt" data-toggle="modal" data-target="#myModal"></i>Share</a>
+              <i class="fas fa-redo-alt"></i>Respost
+            </div>
+            <div class="quote">
+              <i class="fas fa-quote-right"></i>Quote
+            </div>
+            <div class="share">
+              <a><i class="fas fa-share-alt" data-toggle="modal" data-target="#myModal"></i>Share</a>
+            </div>
           </div>
 <!-- Modal -->
             <div id="myModal" class="modal fade" role="dialog">

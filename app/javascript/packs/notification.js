@@ -1,11 +1,12 @@
  
 (function() {
+
   var Notifications,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   Notifications = (function() {
     function Notifications() {
-    	// debugger
+    
       this.handleSuccess = __bind(this.handleSuccess, this);
       this.handleClick = __bind(this.handleClick, this);
       this.notifications = $("[data-behavior='notifications']");

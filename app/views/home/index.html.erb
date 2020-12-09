@@ -47,17 +47,23 @@
 							<p>
 								<!-- <p class="post"><%#= post.likes.count %> <%#= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p> -->
 								<div id="post_like<%=post.id %>" class="like-icon">
-									<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-									<% if pre_like %>
-										<%= link_to  post_like_path(post, pre_like), method: :delete,remote: true do%>
-											<i class="far fa-thumbs-down"></i> unlike
+									<%# pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+									<%# if pre_like %>
+										<%#= link_to  post_like_path(post, pre_like), method: :delete,remote: true do%>
+											<!-- <i class="far fa-thumbs-down"></i> unlike -->
 											<%#= post.likes.count%>
-  									<% end %>
-									<% else %>
-										<%= link_to  post_likes_path(post), method: :post ,remote: true do%>
-	 										<i class="far fa-thumbs-up"></i> like
-										<% end %>
-									<% end %>
+  									<%# end %>
+									<%# else %>
+										<%#= link_to  post_likes_path(post), method: :post ,remote: true do%>
+	 										<!-- <i class="far fa-thumbs-up"></i> like -->
+										<%# end %>
+									<%# end %>
+									<%#= render "user_form", :f => f %>
+									<%#= render :partial => "user_form", :locals => {:f => f} %>
+									<%# byebug %>
+									<% @post = post %>
+									<%= render 'posts/like_button', :locals => {:post => @post} %>
+									
 								</div>
 
 								
@@ -171,7 +177,7 @@
 			<div class="user-details">
 				<% if current_user.present?%>
 					<p>
-						<%= image_tag current_user.image, id: "image" %>
+						<%#= image_tag current_user.image, id: "image" %>
 
 						<b><%= current_user.username.capitalize %></b>
 			

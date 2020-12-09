@@ -1,4 +1,4 @@
-<%# byebug %>
+
 <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
 <% if pre_like %>
 	<%= link_to  post_like_path(@post, pre_like), method: :delete,remote: true do%>
@@ -9,6 +9,5 @@
 	 <i class="far fa-thumbs-up"></i> like
 	<% end %>
 <% end %>
-
 
 
